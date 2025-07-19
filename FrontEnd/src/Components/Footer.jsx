@@ -4,22 +4,7 @@ const Footer = () => {
   return (
     <div>
      <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
-     <p>i am the footer</p>
+   
     </div>
   )
 }
