@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <>
-    <div className='h-16 pr-20 pl-10 text-white flex justify-between items-center sticky top-0 bg-black'>
+    <div className='sticky top-0 bg-black border-b-2 border-gray-800 h-20 pr-20 pl-10  flex items-center justify-between'>
+    {/* <div className='h-16 pr-20 pl-10 text-white flex  items-center'> */}
     <div>
       <img src="y" alt="logo Here" />
     </div>
-    <div className='flex gap-8 text-lg font-medium '>
+    <div className='flex gap-8 text-xl font-medium '>
       <NavLink className={({isActive}) => isActive ? "text-red-400 " : "hover:text-yellow-300"} to="/home"> Home </NavLink>
       <NavLink className={({isActive}) => isActive ? "text-red-400 " : "hover:text-yellow-300"} to="/match"> Match </NavLink>
       <NavLink className={({isActive}) => isActive ? "text-red-400 " : "hover:text-yellow-300"} to="/players"> Players </NavLink>
@@ -20,7 +20,7 @@ const Header = () => {
 
     </div>
     </div>
-    </>
+    // </div>
   )
 }
 
