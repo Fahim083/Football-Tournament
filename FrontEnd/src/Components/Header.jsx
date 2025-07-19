@@ -3,12 +3,24 @@ import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
+    <>
+    <div className='h-16 pr-20 pl-10 text-white flex justify-between items-center sticky top-0 bg-black'>
     <div>
-      <NavLink to="/home"> Home </NavLink>
-      <NavLink to="/match"> Home </NavLink>
-      <NavLink to="/rules"> Home </NavLink>
-      <NavLink to="/teams"> Home </NavLink>
+      <img src="" alt="logo Here " />
     </div>
+    <div className='flex gap-8 text-lg font-medium '>
+      <NavLink to="/home"> Home </NavLink>
+      <NavLink to="/match"> Match </NavLink>
+      <NavLink to="/players"> Players </NavLink>
+      <NavLink to="/teams"> Teams </NavLink>
+      <NavLink to="/rules"> Rules </NavLink>
+      <NavLink to="/features"> Features </NavLink>
+    </div>
+    <div className='w-32'>
+
+    </div>
+    </div>
+    </>
   )
 }
 

@@ -1,1 +1,11 @@
 @import "tailwindcss";
+/* index.css */
+
+ /* line 5 to 9  make the background and text color dark mode compatible even if there was noelemrnt */
+html,
+body {
+  @apply h-full bg-white text-black dark:bg-black dark:text-white;
+}
+
+
+
