@@ -1,24 +1,40 @@
-import { useState } from "react";
+
 import {
   createRoutesFromElements,
   createBrowserRouter,
   Route,
+  RouterProvider,
 } from "react-router-dom";
+  
+
+// layouts
+import MainLayout from "./Layouts/MainLayout";
+
+
+// pages
+import HomePage from "./Pages/HomePage";
+import ErrorPage from "./Pages/ErrorPage";
+
+
+
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/">
+        <Route path="" element={<MainLayout />}>
         <Route path="home" element={<HomePage />} />
+        </Route>
+        <Route path="/*" element={<ErrorPage/>} />
       </Route>
+    
+  
+
     )
   );
 
-  return (
-    <>
-      <h1 class="text-3xl font-bold text-red-400">Hello world!</h1>
-    </>
-  );
+  return <RouterProvider router={router} />;
+  
 }
 
 export default App;
