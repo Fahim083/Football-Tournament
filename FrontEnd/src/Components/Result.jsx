@@ -14,7 +14,7 @@ const Result = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(data);
+  // console.log(data);
   return (
     <div className="my-10">
       <h1 className="text-4xl font-medium my-3 pb-4">Highlights</h1>

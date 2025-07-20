@@ -8,7 +8,7 @@ const Header = () => {
     <div>
       <img src="y" alt="logo Here" />
     </div>
-    <div className='flex gap-8 text-xl font-medium '>
+    <div className='flex w-[600px] gap-8 text-xl font-medium '>
       <NavLink className={({isActive}) => isActive ? "text-red-400 " : "hover:text-yellow-300"} to="/home"> Home </NavLink>
       <NavLink className={({isActive}) => isActive ? "text-red-400 " : "hover:text-yellow-300"} to="/match"> Match </NavLink>
       <NavLink className={({isActive}) => isActive ? "text-red-400 " : "hover:text-yellow-300"} to="/players"> Players </NavLink>
