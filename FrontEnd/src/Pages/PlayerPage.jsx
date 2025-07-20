@@ -6,8 +6,8 @@ const PlayerPage = () => {
   return (
     <div>
       <div className="flex items-center gap-5 pt-4">
-        <p className="text-lg w-[560px] text-gray-300">Search By Name</p>
-        <p className="text-lg w-[260px] text-gray-300">Search By Batch  </p>
+        <p className="text-lg w-[555px] text-gray-300">Search By Name</p>
+        <p className="text-lg w-[253px] text-gray-300">Search By Batch  </p>
         <p className="text-lg text-gray-300">Search By Category  </p>
       </div>
       <div className="py-2">
