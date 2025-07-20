@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div className='sticky top-0 bg-black border-b-2 border-gray-800 h-20 pr-20 pl-10  flex items-center justify-between'>
+    <div className='sticky top-0 bg-black border-b-2 border-gray-800 h-20 pr-20 pl-10  flex items-center justify-between z-50'>
     {/* <div className='h-16 pr-20 pl-10 text-white flex  items-center'> */}
     <div>
       <img src="y" alt="logo Here" />
