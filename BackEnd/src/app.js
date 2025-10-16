@@ -2,13 +2,14 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
+import { playerRouter } from "./routes/players.route.js";
 
 
 
 const app = express();
 
 app.use(helmet()); // Add helmet for security headers
-
+// app.use(cors()); // Enable CORS for all origins by default
 const allowedOrigins = [
   process.env.CLIENT_URL_PROD,  // production domain
   process.env.CLIENT_URL_DEV,  // local development
@@ -37,5 +38,10 @@ app.use(express.urlencoded({ extended: true, limit: '1mb' })); // Parse URL-enco
 app.use(express.static('public')); // Serve static files from the 'public' directory
 app.use(cookieParser()); // Parse cookies in request headers
 
+app.use("/api/players", playerRouter);
+app.get("/", (req, res) => {
+    res.send("API is runningggggg...");
+    }
+);
 
 export default app;
