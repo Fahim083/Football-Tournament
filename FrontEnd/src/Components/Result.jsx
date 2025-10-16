@@ -23,7 +23,7 @@ const Result = () => {
           </div>
         </div>
       
-      <div className="flex justify-center gap-[610px] items-center px-15">
+      <div className="flex justify-center gap-[610px] items-top px-15">
         <div className="flex flex-col gap-1">
        <div className="flex  text-gray-300  justify-between gap-5 items-center">
           <div className="flex w-60 justify-end gap-2 items-center">
