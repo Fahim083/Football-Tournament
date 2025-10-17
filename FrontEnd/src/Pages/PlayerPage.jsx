@@ -1,52 +1,94 @@
 import { IoSearchSharp } from "react-icons/io5";
 import Player from "../Components/Player";
-
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import Loading from "../Components/Loading";
+import { useState, useEffect } from "react";
 
 const PlayerPage = () => {
+  const [category, setCategory] = useState("All");
+  const [search, setSearch] = useState("");
+  const [players, setPlayers] = useState([]);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["players"],
+    queryFn: async () =>
+      await axios.get(
+        "https://aa-ten-psi.vercel.app/players"
+      ),
+    staleTime: 1000 * 60 * 20,
+  });
+
+  useEffect(() => {
+    if (data) {
+      console.log(data.data);
+      setPlayers(data.data);
+    }
+  }, [data]);
+
+  if (isLoading) return <Loading />;
+
+  const categories = ["All", "Category A", "Category B", "Category C"];
+
+  const filteredPlayers = players.filter((player) => {
+    const matchCategory =
+      category === "All" || player.category === category;
+    const matchSearch = player.name
+      ?.toLowerCase()
+      .includes(search.toLowerCase());
+    return matchCategory && matchSearch;
+  });
+
   return (
-    <div>
-      <div className="flex items-center gap-5 pt-4">
-        <p className="text-lg w-[555px] text-gray-300">Search By Name</p>
-        <p className="text-lg w-[253px] text-gray-300">Search By Batch  </p>
-        <p className="text-lg text-gray-300">Search By Category  </p>
-      </div>
-      <div className="py-2">
-        <div className="flex  items-center gap-28  mb-6">
+    <div className="pt-5">
+      {/* Top Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-5 border-b pb-3 sm:pb-5 mb-4 sm:mb-5">
+        {/* Categories */}
+        <div className="flex flex-wrap  gap-3">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setCategory(cat)}
+              className={`sm:px-4 py-0.5 sm:py-1 text-md sm:text-lg rounded-full sm:border transition-all duration-200 ${
+                category === cat
+                  ? "sm:bg-blue-600 text-blue-400 sm:text-white border-blue-600 font-semibold"
+                  : "sm:bg-white text-white sm:text-gray-700 border-gray-300 hover:bg-blue-50"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Search bar */}
+        {/* <div className="relative w-full sm:w-64">
+          <IoSearchSharp className="absolute top-3 left-3 text-gray-500" />
           <input
             type="text"
-            placeholder="Search"
-            className="w-1/3 text-lg font-semibold  p-3 border rounded-md border-gray-300 focus:outline-none  focus:border-orange-500"
+            placeholder="Search players..."
+            className="border rounded-full w-full pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
-          <div className="flex justify-start gap-10 w-1/2" >
-          <select className="w-80  text-lg font-semibold  p-3 border rounded-md text-gray-400 border-gray-300 focus:outline-none  focus:border-orange-500">
-            <option>All Semester</option>
-            <option>1 year 1 sem</option>
-            <option>1 year 2 sem</option>
-            <option>2 year 2 sem</option>
-            <option>3 year 1 sem</option>
-            <option>4 year 1 sem</option>
-            <option>Master 1 sem</option>
-          </select>
-          <select className="w-80  text-lg font-semibold  p-3 border rounded-md text-gray-400 border-gray-300 focus:outline-none  focus:border-orange-500">
-            <option>All Category</option>
-            <option>Category A</option>
-            <option>Category B</option>
-            <option>Category C</option>
-            <option>Category D</option>
-            
-          </select>
-          <div className="flex">
-            
-          <button className="w-full flex md:w-auto items-center gap-2 px-6 py-3 bg-[rgb(71,144,222)] text-lg font-bold text-white rounded-md cursor-pointer hover:bg-orange-600  transition-colors">
-            <IoSearchSharp/> SEARCH
-          </button>
-          </div>
-          </div>
         </div>
-      </div>
-      <h3 className="text-2xl font-medium ">ALL  PLAYERS :</h3>
-      <div>
-        <Player />
+        */}
+        </div>  
+
+      {/* Title */}
+      <h3 className="text-2xl font-semibold mb-4 sm:mb-6">
+        {category === "All" ? "All Players" : category}
+      </h3>
+
+      {/* Players List */}
+
+      <div className="grid gap-3 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 px-2 mb-4 sm:mb-6 ">
+        {filteredPlayers.length > 0 ? (
+          filteredPlayers.map((player) => (
+            <Player key={player._id} player={player} />
+          ))
+        ) : (
+          <p>No players found</p>
+        )}
       </div>
     </div>
   );

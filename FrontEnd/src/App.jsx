@@ -20,6 +20,8 @@ import MatchPage from "./Pages/MatchPage";
 import RulePage from "./Pages/RulePage";
 import FeaturePage from "./Pages/FeaturePage";
 import TeamsPage from "./Pages/TeamsPage";
+import DemoPage from "./Components/DemoPage";
+import Player from "./Components/Player";
 
 
 
@@ -29,13 +31,13 @@ function App() {
     createRoutesFromElements(
       <Route path="/">
         <Route path="" element={<MainLayout />}>
-        <Route path="" element={<Navigate to="/home"/>} />
-        <Route path="home" element={<HomePage />} />
+        <Route path="" element={<Navigate to="/players"/>} />
+        <Route path="home" element={<DemoPage />} />
         <Route path="players" element={<PlayerPage />} />
-        <Route path="teams" element={<TeamsPage />} />
-        <Route path="rules" element={<RulePage />} />
-        <Route path="features" element={<FeaturePage />} />
-        <Route path="Match" element={<MatchPage />} />
+        <Route path="teams" element={<DemoPage />} />
+        <Route path="rules" element={<DemoPage />} />
+        <Route path="features" element={<DemoPage />} />
+        <Route path="Match"element={<DemoPage />} />
         </Route>
         <Route path="/*" element={<ErrorPage/>} />
       </Route>

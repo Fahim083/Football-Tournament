@@ -10,10 +10,10 @@ const MainLayout = () => {
   return (
     <>
       <Header />
-      <div className='mx-7'>
+      <div className=' sm:mx-5 mx-2'>
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
